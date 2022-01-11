@@ -5,7 +5,11 @@ library(cowplot)
 library(scales)
 library(ggpp)
 library(ncdf4)
-#from Darrell's sheet
+library(egg)
+
+
+# Load in the data --------------------------------------------------------
+
 allData <- read_xlsx("data/TemperatureData.xlsx",sheet = 2,skip = 1)
 
 instrumental <- allData[,1:4] %>% 
