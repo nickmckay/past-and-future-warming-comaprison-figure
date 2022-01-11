@@ -69,3 +69,17 @@ MAGICC v7.5 output (reference?)
 Subtract 0.85°C to adjust ∆ GMST to 1850-1900
 
 Data in data/TemperatureData.xlsx
+
+# References
+
+Gulev, S. K., Thorne, P. W., Ahn, J., Dentener, F. J., Domingues, C. M., Gerland, S., Gong, D., Kaufman, D. S., Nnamchi, H. C., Quaas, J., Rivera, J. A., Sathyendranath, S., Smith, S. L., Trewin, B., von Shuckmann, K., and Vose, R. S.: Changing State of the Climate System, in: Climate Change 2021: The Physical Science Basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change, edited by: Masson-Delmotte, V., Zhai, P., Pirani, A., Connors, S. L., Péan, C., Berger, S., Caud, N., Chen, Y., Goldfarb, L., Gomis, M. I., Huang, M., Leitzell, K., Lonnoy, E., Matthews, J. B. R., Maycock, T. K., Waterfield, T., Yelekçi, O., Yu, R., and Zhou, B., Cambridge University Press, https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_Chapter_02.pdf, 2021.
+
+Hansen J., Sato, M., Russell, G., Kharecha, P.: Climate sensitivity, sea level and atmospheric carbon dioxide. Phil. Trans. R. Soc. A 371, 20120294, https://doi.org/10.1098/rsta.2012.0294, 2013
+
+Kaufman, D., McKay, N., Routson, C., Erb, M., Dätwyler, C., Sommer, P., Heiri, O., and Davis, B.: Holocene global surface temperature: A multi-method reconstruction approach. Scientific Data, 7, 201, https://doi.org/10.1038/s41597-020-0530-7, 2020.
+
+Meinshausen, M., Nicholls, Z. R. J., Lewis, J., Gidden, M. J., Vogel, E., Freund, M., Beyerle, U., Gessner, C., Nauels, A., Bauer, N., Canadell, J. G., Daniel, J. S., John, A., Krummel, P. B., Luderer, G., Meinshausen, N., Montzka, S. A., Rayner, P. J., Reimann, S., Smith, S. J., van den Berg, M., Velders, G. J. M., Vollmer, M. K., and Wang, R. H. J.: The shared socioeconomic pathway (SSP) greenhouse gas concentrations and their extensions to 2500. Geosci. Model Dev., 13, 3571–3605, https://doi.org/10.5194/gmd-13-3571-2020, 2020.
+
+Osman, M. B., Tierney, J. E., Zhu, J., Tardif, R., Hakim, G., King, J., and Poulsen, C. J.: Globally resolved surface temperatures since the Last Glacial Maximum. Nature 599, 239-244, 2021.
+
+Snyder, C. W.: Evolution of global temperature over the past two million years. Nature, 538, 226-228, https://doi.org/10.1038/nature19798, 2016.
