@@ -1,0 +1,13 @@
+cff-version: 1.1.0
+message: "You can cite this code as follows:"
+authors:
+  - family-names: McKay
+    given-names: Nicholas
+    orcid: https://orcid.org/0000-0003-3598-5113
+  - family-names: Kaufman
+    given-names: Darrell
+    orcid: https://orcid.org/0000-0002-7572-1414
+
+title: nickmckay/past-and-future-warming-comparison-figure: Climate of the Past resubmission
+version: resubmission
+date-released: 2022-01-11
