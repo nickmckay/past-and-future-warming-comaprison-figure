@@ -59,9 +59,9 @@ gmstqa <- gmstq - gmst1850
 
 #calculate some bins
 binvec <- seq(50,160050,by = 200)
-benthicBins <- bin(hansen$`Age (BP)...16`,hansen$gmsta,bin.vec = binvec) %>% 
+benthicBins <- bin(hansen$`Age (BP)...11`,hansen$gmsta,bin.vec = binvec) %>% 
   mutate(stack = "Hansen et al.")
-plankticBins <- bin(snyder$`Age (BP)...20`,snyder$gmsta,bin.vec = binvec) %>% 
+plankticBins <- bin(snyder$`Age (BP)...15`,snyder$gmsta,bin.vec = binvec) %>% 
   mutate(stack = "Snyder et al.")
 
 deepBins <- bind_rows(benthicBins,plankticBins) %>% 
