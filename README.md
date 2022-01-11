@@ -4,6 +4,15 @@ This repository contains the code and data needed to reproduce Figure 1 from **K
 
 ![Figure 1](figures/WarmingTimescale.png)
 
+# Code
+
+The code to reproduce this figure is written in R, and available in `figure1.R`. Several packages are required to run the code, and will need to be installed for the code to run. 
+
+
+# Data
+
+All of the data presented here are publicly available, and most have been compiled into a spreadsheet for convenience. 
+
 
 ## Instrumental temperature (1850-2020)
 AR6-WGI assessed 4-dataset mean from Chapter 2 (HadCRUT, NOAA, Berkeley, Kadow)
