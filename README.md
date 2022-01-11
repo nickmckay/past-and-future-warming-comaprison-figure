@@ -1,6 +1,8 @@
 # Comparing past and future warming
 
-This repository contains the code and data needed to reproduce Figure 1 from 
+This repository contains the code and data needed to reproduce Figure 1 from **Kaufman, Darrell S. and McKay, Nicholas P, 2021, Technical Note: Past and future warming – Direct comparison on multi-century timescales. Climate of the Past Discussions. 10.5194/cp-2021-146**. The article is open and [available here](https://cp.copernicus.org/preprints/cp-2021-146/). 
+
+![Figure 1](figures/WarmingTimescale.png)
 
 
 ## Instrumental temperature (1850-2020)
