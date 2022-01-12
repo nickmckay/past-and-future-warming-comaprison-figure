@@ -38,3 +38,7 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 .DS_Store
+data/~$TemperatureData.xlsx
+data/Osman GMST and Confidence Limits.csv
+data/.DS_Store
+.DS_Store

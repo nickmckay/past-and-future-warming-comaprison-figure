@@ -18,40 +18,11 @@ instrumental <- allData[,1:4] %>%
 temp12k <- allData[,6:9] %>% 
   rename(`Age (BP)` = 1,gmsta = 2,cl05 = 3,cl95 = 4)
 
-hansen <- allData[,11:13] %>% 
-  rename(gmst = 2,gmsta = 3) %>% mutate(stack = "Hansen et al.")
-
-
-snyder <- allData[,15:17] %>% 
-  rename(gmstOrig = 2,gmsta = 3) %>% mutate(stack = "Snyder et al.")
-
-prehol <- bind_rows(hansen,snyder) %>% filter(`Age (BP)` > 12000)
-
-
-SSP1_9 <- read_xlsx("data/TemperatureData.xlsx",sheet = 3,skip = 2,range = "A2:D453") %>% 
-  mutate(ssp = "SSP1-1.9")
-SSP2_6 <- read_xlsx("data/TemperatureData.xlsx",sheet = 3,skip = 2,range = "F2:I453")%>% 
-  mutate(ssp = "SSP1-2.6")
-SSP4_5 <- read_xlsx("data/TemperatureData.xlsx",sheet = 3,skip = 2,range = "K2:N453")%>% 
-  mutate(ssp = "SSP2-4.5")
-SSP7_0 <- read_xlsx("data/TemperatureData.xlsx",sheet = 3,skip = 2,range = "P2:S453")%>% 
-  mutate(ssp = "SSP3-7.0")
-
-SSP8_5 <- read_xlsx("data/TemperatureData.xlsx",sheet = 3,skip = 2,range = "U2:X453")%>% 
-  mutate(ssp = "SSP1-8.5")
-
-projections <- bind_rows(SSP1_9,SSP2_6,SSP4_5,SSP7_0,SSP8_5) %>% 
-  filter(year > 2020) %>% 
-  filter(ssp %in% c("SSP1-2.6","SSP2-4.5","SSP3-7.0"))
-
-ylimits <- c(-6,8)
-
-
-#add Osman data
-osman <- nc_open("data/LGMR_GMST_ens.nc")
+#get osman data from netcdf
+osmanNc <- nc_open("data/LGMR_GMST_ens.nc")
 osmanAge <- seq(to = 23900,from = 100,by = 200)
 
-gmstEns <- ncvar_get(osman, "gmst")
+gmstEns <- ncvar_get(osmanNc, "gmst")
 gmstq <- apply(gmstEns,1,quantile,probs = c(0.05,.5,.95))
 
 #get 1850 anomaly
@@ -59,13 +30,51 @@ gmst1850 <- gmstq[2,1]
 
 gmstqa <- gmstq - gmst1850
 
+#write out the data for future reference
+rbind(osmanAge,gmstqa) %>% 
+  t() %>% 
+  as.data.frame() %>% 
+  setNames(c("Age (yr BP)","5% cl","median GMST","95% cl")) %>% 
+  write_csv(file = "data/Osman GMST and Confidence Limits.csv")
+
+#or load from excel
+osman <- allData[,11:14] %>% 
+  rename(`Age (BP)` = 1,gmsta = 2,cl05 = 3,cl95 = 4)
+
+hansen <- allData[,16:18] %>% 
+  rename(gmst = 2,gmsta = 3) %>% mutate(stack = "Hansen et al.")
+
+
+snyder <- allData[,20:22] %>% 
+  rename(gmstOrig = 2,gmsta = 3) %>% mutate(stack = "Snyder et al.")
+
+prehol <- bind_rows(hansen,snyder) %>% filter(`Age (BP)` > 12000)
+
+
+SSP2_6 <- read_xlsx("data/TemperatureData.xlsx",sheet = 3,skip = 2,range = "A2:D453") %>% 
+  mutate(ssp = "SSP1-2.6")
+SSP4_5 <- read_xlsx("data/TemperatureData.xlsx",sheet = 3,skip = 2,range = "F2:I453")%>% 
+  mutate(ssp = "SSP2-4.5")
+SSP7_0 <- read_xlsx("data/TemperatureData.xlsx",sheet = 3,skip = 2,range = "K2:N453")%>% 
+  mutate(ssp = "SSP3-7.0")
+
+projections <- bind_rows(SSP2_6,SSP4_5,SSP7_0) %>% 
+  filter(year > 2020) %>% 
+  filter(ssp %in% c("SSP1-2.6","SSP2-4.5","SSP3-7.0")) %>% 
+  rename(mean = `mean (°C)`)
+
+ylimits <- c(-6,8)
+
+
+
+
 
 
 #calculate some bins
 binvec <- seq(50,160050,by = 200)
-benthicBins <- bin(hansen$`Age (BP)...11`,hansen$gmsta,bin.vec = binvec) %>% 
+benthicBins <- bin(hansen$`Age (BP)...16`,hansen$gmsta,bin.vec = binvec) %>% 
   mutate(stack = "Hansen et al.")
-plankticBins <- bin(snyder$`Age (BP)...15`,snyder$gmsta,bin.vec = binvec) %>% 
+plankticBins <- bin(snyder$`Age (BP)...20`,snyder$gmsta,bin.vec = binvec) %>% 
   mutate(stack = "Snyder et al.")
 
 deepBins <- bind_rows(benthicBins,plankticBins) %>% 
@@ -160,9 +169,9 @@ theme(legend.title = element_blank(),legend.position = c(.62,.5),
 #panel 2 
 pan2 <- ggplot() +
   geom_ribbon(data = temp12k,aes(x = `Age (BP)`+50,ymin = cl05,ymax = cl95), fill = "gray70")+
-  geom_ribbon(aes(x = osmanAge + 50,ymin = gmstqa[1,],ymax = gmstqa[3,]),fill = "DarkRed",alpha = .5) +
+  geom_ribbon(data = osman,aes(x = `Age (BP)`+50,ymin = cl05,ymax = cl95),fill = "DarkRed",alpha = .5) +
   geom_line(data = temp12k,aes(x = `Age (BP)`+50 ,y = gmsta, color = "Kaufman et al."))+
-  geom_line(aes(x = osmanAge +50 ,y = gmstqa[2,], color = "Osman et al."))+
+  geom_line(data = osman, aes(x = `Age (BP)`+50 ,y = gmsta, color = "Osman et al."))+
   geom_segment(aes(x = 6500, xend = 6500, y = 0.2, yend = 1), size = 1, color = "red") +
   xlim(c(12000,100))+
   scale_x_reverse(name = "Years before 2000 CE",expand = c(0,0),breaks = c(12000,8000,4000,100),labels = c("",8000, 4000,"100    "))+
