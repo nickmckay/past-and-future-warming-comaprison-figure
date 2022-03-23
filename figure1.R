@@ -157,7 +157,7 @@ pan1 <- ggplot(prehol) +
   scale_y_continuous(name = "Global surface temperature relative to 1850-1900 (°C)",breaks = seq(min(ylimits),max(ylimits),by = 2),minor_breaks = seq(min(ylimits),max(ylimits))) +
   coord_cartesian(ylim = ylimits)+
   theme_bw() + 
-  annotate("text", x = 139000, y = -6, label = "A") +
+  annotate("text", x = 139000, y = -6, label = "(a)") +
 theme(legend.title = element_blank(),legend.position = c(.62,.5),
         legend.background = element_blank(),
         panel.grid.major.x = element_blank(),
@@ -179,7 +179,7 @@ pan2 <- ggplot() +
   scale_color_manual(values = c("black","DarkRed"))+
   coord_cartesian(xlim = c(12000,50),ylim = ylimits)+
   theme_bw()+
-  annotate("text", x = 11000, y = -6, label = "B") +
+  annotate("text", x = 11000, y = -6, label = "(b)") +
   theme(axis.title.y=element_blank(),
         legend.title = element_blank(),
         legend.spacing.y = unit(-5, "pt"),
@@ -203,7 +203,7 @@ pan3 <- ggplot() +
   geom_line(data = allSspBinsNN,aes(x = year, y = mean, color = ssp),linetype = 2)+
   geom_line(aes(x = c(2000,2000), y =c(0,0), linetype = c("Gulev et al.","200-year means")),color = "gray50")+
   coord_cartesian(ylim = ylimits)+
-  annotate("text", x = 1920, y = -6, label = "C") +
+  annotate("text", x = 1930, y = -6, label = "(c)") +
   scale_x_continuous(name = "Year (CE)",expand = c(0,0),limits = c(1900,2300),labels = c("   1900",2000,2100,2200,2300),breaks = c(1900,2000,2100,2200,2300))+
   scale_y_continuous(name = "Global surface temperature relative to 1850-1900 (°C)",position = "right", breaks = seq(min(ylimits),max(ylimits),by = 2),
                      minor_breaks = seq(min(ylimits),max(ylimits))) +
