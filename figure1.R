@@ -211,13 +211,15 @@ pan3 <- ggplot() +
   scale_fill_brewer(palette = "Dark2")+
   scale_color_brewer(palette = "Dark2")+
   scale_linetype_manual(values = c(2,1)) +
+  guides(fill = FALSE) +
   theme(legend.title = element_blank(),
         legend.spacing.y = unit(-5, "pt"),
         legend.position = c(.6,.23),
         legend.background = element_blank(),
         axis.title.y.right = element_text(angle = 90),
         panel.grid.major.x = element_blank(),
-        panel.grid.minor.x = element_blank())
+        panel.grid.minor.x = element_blank()) 
+  
   
 
 
