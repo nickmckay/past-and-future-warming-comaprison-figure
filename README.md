@@ -10,7 +10,7 @@ The code to reproduce this figure is written in R, and available in `figure1.R`.
 # Data
 
 The time series data in figure 1 are included in data/TemperatureData.xlsx.
-The data are available from publicaly accessible sources, and have been modified relative to the 1950-1900 baseline as follows:
+The data are available from publicaly accessible sources, and have been modified relative to the 1850-1900 baseline as follows:
 
 
 ## Hansen et al. (2013)
@@ -89,9 +89,9 @@ McKay, N.: nickmckay/past-and-future-warming-comparison-figure, Zenodo [code and
 
 Nicholls, Z., Meinshausen, M., and Lewis, J.: AR6 WG1 plots and processing (v1.0.0), Zenodo [data set], https://doi.org/10.5281/zenodo.6386979, 2022.
 
-Osmann, M. B., Tierney, J. E., Zhu, J., Tardif, R., Halkim, G. J., King, J., and Poulsen, C. J.: Globally resolved surface temperatures since the Last Glacial Maximum, Nature, 599, 239–244, https://doi.org/10.1038/s41586-021-03984-4, 2021a.
+Osman, M. B., Tierney, J. E., Zhu, J., Tardif, R., Halkim, G. J., King, J., and Poulsen, C. J.: Globally resolved surface temperatures since the Last Glacial Maximum, Nature, 599, 239–244, https://doi.org/10.1038/s41586-021-03984-4, 2021a.
 
-Osmann, M. B., Tierney, J. E., Zhu, J., Tardif, R., Halkim, G. J., King, J., and Poulsen, C. J.: NOAA/WDS Paleoclimatology – Globally resolved surface temperatures since the Last Glacial Maximum, NOAA National Centers for Environmental Information [data set], https://doi.org/10.25921/njxd-hg08, 2021b.
+Osman, M. B., Tierney, J. E., Zhu, J., Tardif, R., Halkim, G. J., King, J., and Poulsen, C. J.: NOAA/WDS Paleoclimatology – Globally resolved surface temperatures since the Last Glacial Maximum, NOAA National Centers for Environmental Information [data set], https://doi.org/10.25921/njxd-hg08, 2021b.
 
 PAGES 2k Consortium (Neukom, R., Barboza, L.A., Erb, M. P., Shi, F., Emile-Geay, J., Evans, M. N., Franke, J., Kaufman, D. S., Lücke, L., Rehfeld, K., Schurer, A., Zhu, F., Brönnimann, S., Hakim, G.J., Henley, B., Ljungqvist, F. C., McKay, N., Valler, V., von Gunten, L.): Consistent multi-decadal variability in global temperature reconstructions and simulations over the Common Era. Nature Geosci., 12, 643-649. https://doi.org/10.1038/s41561-019-0400-0, 2019.
 
