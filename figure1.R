@@ -12,10 +12,10 @@ library(egg)
 
 allData <- read_xlsx("data/TemperatureData.xlsx",sheet = 2,skip = 1)
 
-instrumental <- allData[,1:4] %>% 
+instrumental <- allData[,19:22] %>% 
   rename(year = 1,gmsta = 2,cl05 = 3,cl95 = 4)
 
-temp12k <- allData[,6:9] %>% 
+temp12k <- allData[,9:12] %>% 
   rename(`Age (BP)` = 1,gmsta = 2,cl05 = 3,cl95 = 4)
 
 #get osman data from netcdf
@@ -26,7 +26,7 @@ gmstEns <- ncvar_get(osmanNc, "gmst")
 gmstq <- apply(gmstEns,1,quantile,probs = c(0.05,.5,.95))
 
 #get 1850 anomaly
-gmst1850 <- gmstq[2,1]
+gmst1850 <- gmstq[2,1] - 0.03 #adjust by 0.03 to account for the difference between the 1750-1950 average, as compared to 1850-1900 average (in PAGES 2k (Neukom et al., 2019))
 
 gmstqa <- gmstq - gmst1850
 
@@ -38,30 +38,30 @@ rbind(osmanAge,gmstqa) %>%
   write_csv(file = "data/Osman GMST and Confidence Limits.csv")
 
 #or load from excel
-osman <- allData[,11:14] %>% 
+osman <- allData[,14:17] %>% 
   rename(`Age (BP)` = 1,gmsta = 2,cl05 = 3,cl95 = 4)
 
-hansen <- allData[,16:18] %>% 
+hansen <- allData[,1:3] %>% 
   rename(gmst = 2,gmsta = 3) %>% mutate(stack = "Hansen et al.")
 
 
-snyder <- allData[,20:22] %>% 
+snyder <- allData[,5:7] %>% 
   rename(gmstOrig = 2,gmsta = 3) %>% mutate(stack = "Snyder et al.")
 
 prehol <- bind_rows(hansen,snyder) %>% filter(`Age (BP)` > 12000)
 
 
-SSP2_6 <- read_xlsx("data/TemperatureData.xlsx",sheet = 3,skip = 2,range = "A2:D453") %>% 
+SSP2_6 <- read_xlsx("data/TemperatureData.xlsx",sheet = 2,skip = 1,range = "X2:AA453") %>% 
   mutate(ssp = "SSP1-2.6")
-SSP4_5 <- read_xlsx("data/TemperatureData.xlsx",sheet = 3,skip = 2,range = "F2:I453")%>% 
+SSP4_5 <- read_xlsx("data/TemperatureData.xlsx",sheet = 2,skip = 1,range = "AC2:AF453")%>% 
   mutate(ssp = "SSP2-4.5")
-SSP7_0 <- read_xlsx("data/TemperatureData.xlsx",sheet = 3,skip = 2,range = "K2:N453")%>% 
+SSP7_0 <- read_xlsx("data/TemperatureData.xlsx",sheet = 2,skip = 1,range = "AH2:AK453")%>% 
   mutate(ssp = "SSP3-7.0")
 
 projections <- bind_rows(SSP2_6,SSP4_5,SSP7_0) %>% 
   filter(year > 2020) %>% 
   filter(ssp %in% c("SSP1-2.6","SSP2-4.5","SSP3-7.0")) %>% 
-  rename(mean = `mean (°C)`)
+  rename(mean = `∆GST (°C)`)
 
 ylimits <- c(-6,8)
 
@@ -72,9 +72,9 @@ ylimits <- c(-6,8)
 
 #calculate some bins
 binvec <- seq(50,160050,by = 200)
-benthicBins <- bin(hansen$`Age (BP)...16`,hansen$gmsta,bin.vec = binvec) %>% 
+benthicBins <- bin(hansen$`Age (BP)...1`,hansen$gmsta,bin.vec = binvec) %>% 
   mutate(stack = "Hansen et al.")
-plankticBins <- bin(snyder$`Age (BP)...20`,snyder$gmsta,bin.vec = binvec) %>% 
+plankticBins <- bin(snyder$`Age (BP)...5`,snyder$gmsta,bin.vec = binvec) %>% 
   mutate(stack = "Snyder et al.")
 
 deepBins <- bind_rows(benthicBins,plankticBins) %>% 
