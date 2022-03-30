@@ -12,6 +12,9 @@ The code to reproduce this figure is written in R, and available in `figure1.R`.
 The time series data in figure 1 are included in data/TemperatureData.xlsx.
 The data are available from publicaly accessible sources, and have been modified relative to the 1950-1900 baseline as follows:
 
+
+## Hansen et al. (2013)
+
 **Data set:** Late Quaternary global temperature according to equations by Hansen et al. (2013) applied to benthic marine oxygen isotope stack of Zachos et al. (2008).
 
 **Available:** http://www.columbia.edu/~mhs119/Sensitivity+SL+CO2/Table.txt (last access: 21 March 2022).
@@ -19,6 +22,7 @@ The data are available from publicaly accessible sources, and have been modified
 **Modified:** Subtracted 14.15° C to adjust temperature relative to 1961-1990 and added 0.36°C to adjust to 1850-1900 reference period, based on the AR6 assessed four data set mean (Trewin, 2022; GMST-component_data_sets.csv).
 
 
+## Snyder (2016)
 
 **Data set:** Late Quaternary multi-proxy sea surface temperature stack converted to global temperature by Snyder (2016).
 
@@ -27,6 +31,7 @@ The data are available from publicaly accessible sources, and have been modified
 **Modified:** Added 0.23° C to adjust late Holocene temperature to the 1850-1900 reference period, based on the reconstruction of Kaufman et al. (2020a).
 
 
+## Kaufman et al. (2020)
 
 **Data set:**  Holocene multi-method ensemble global temperature of Kaufman et al. (2020b), based on multi-proxy marine and terrestrial paleotemperature data (Temp12k; Kaufman et al., 2020a), using code of Routson et al. (2020).
 
@@ -35,6 +40,7 @@ The data are available from publicaly accessible sources, and have been modified
 **Modified:** Subtracted 0.03° C to adjust 19th century mean temperature to 1850-1900 reference period based on PAGES 2k Consortium (2019) 10-year smoothed multi-method reconstruction (Gilbert et al., 2021; SPM1_1-2000.csv).
 
 
+## Osman et al. (2021)
 
 **Data set:**  Last Glacial Maximum reanalysis (LGMR) of Osman et al. (2021a) based on marine paleotemperature data (Osman et al., 2021b; proxyDatabase.nc) assimilated using climate model (iCESM) priors and code from https://github.com/JonKing93/DASH, v.3.6.1.
 
@@ -43,6 +49,7 @@ The data are available from publicaly accessible sources, and have been modified
 **Modified:** Subtracted 13.49°C (median of the most recent bin) to adjust temperature relative to 1750-1950 and added 0.03° C to adjust to 1850-1900 reference period based on PAGES 2k Consortium (2019) 10-year smoothed multi-method reconstruction (Gilbert et al., 2021; SPM1_1-2000.csv).
 
 
+## Gulev et al. (2021)
 
 **Data set:**  1850-2020 global temperature of Gulev et al. (2021) based on mean of four instrumental data sets (HadCRUT, NOAA, Berkeley Earth, Kadow) assessed by IPCC-AR6-WGI and shown in Fig. 2.11c.
 
@@ -51,6 +58,7 @@ The data are available from publicaly accessible sources, and have been modified
 **Modified:** None (1850-1900 reference period).
 
 
+## Lee et al. (2021)
 
 **Data set:**  Global temperature projections to 2300 of Lee et al. (2021) based on the MAGICC (v.7.5.0) emulator (Meinshausen et al., 2020) calibrated against the IPCC-AR6 assessed temperature to 2100 and shown in Fig. 4.40a.
 
